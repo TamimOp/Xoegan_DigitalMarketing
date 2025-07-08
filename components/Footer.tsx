@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#2C1E12] text-white py-20 px-4 sm:px-8 lg:px-16">
+    <footer className="bg-[#2C1E12] text-white py-30 px-4 sm:px-8 lg:px-16">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 items-start">
         {/* Column 1: Logo and Description */}
         <div>

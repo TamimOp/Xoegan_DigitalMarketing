@@ -13,7 +13,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="flex items-center justify-between w-full px-8 py-4">
+    <nav className="flex items-center justify-between w-full px-30 py-2">
       <div className="flex items-center">
         <Image
           src="/assets/xoegan_logo.svg"
