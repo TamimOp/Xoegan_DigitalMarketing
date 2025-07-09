@@ -82,10 +82,8 @@ const Hero = () => {
       <div className="relative flex items-center justify-center gap-4">
         {/* heroImage1.jpg - smaller image */}
         <div
+          className="w-[190px] h-[285px] rounded-full flex-shrink-0"
           style={{
-            width: "190px",
-            height: "285px",
-            borderRadius: "140px",
             background:
               "url('/assets/heroImage1.jpg') lightgray 50% / cover no-repeat",
             boxShadow:
@@ -95,10 +93,8 @@ const Hero = () => {
 
         {/* heroImage2.png - larger image */}
         <div
+          className="w-[280px] h-[468px] rounded-full flex-shrink-0"
           style={{
-            width: "280px",
-            height: "468px",
-            borderRadius: "140px",
             background:
               "url('/assets/heroImage2.png') lightgray 50% / cover no-repeat",
             boxShadow:
@@ -108,16 +104,8 @@ const Hero = () => {
 
         {/* Floating cards */}
         <div
-          className="absolute top-[20%] right-[-50px] flex-shrink-0"
+          className="absolute top-[20%] right-[-50px] flex flex-col justify-center items-center gap-[10px] flex-shrink-0 w-[170px] h-[56px] px-[10px] py-[8px]"
           style={{
-            display: "flex",
-            width: "170px",
-            height: "56px",
-            padding: "8px 10px",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "10px",
             borderRadius: "12px 12px 12px 0px",
             background: "rgba(255, 255, 255, 0.60)",
             boxShadow: "-2px 4px 26px 1px rgba(0, 0, 0, 0.18)",
@@ -135,16 +123,8 @@ const Hero = () => {
         </div>
 
         <div
-          className="absolute bottom-[20%] right-10 flex-shrink-0"
+          className="absolute bottom-[20%] right-10 flex flex-col justify-center items-center gap-[10px] flex-shrink-0 w-[239px] h-[61px] px-[32px] py-[14px]"
           style={{
-            display: "flex",
-            width: "239px",
-            height: "61px",
-            padding: "14px 32px",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "10px",
             borderRadius: "12px 0px 12px 12px",
             background: "rgba(255, 255, 255, 0.86)",
             boxShadow: "-2px 4px 26px 1px rgba(0, 0, 0, 0.18)",
