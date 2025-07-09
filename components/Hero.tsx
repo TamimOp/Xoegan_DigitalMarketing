@@ -2,6 +2,18 @@
 
 import React from "react";
 import Image from "next/image";
+import localFont from "next/font/local";
+
+const mangoGrotesque = localFont({
+  src: [
+    {
+      path: "../public/fonts/MangoGrotesque-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+  ],
+  variable: "--font-mango-grotesque",
+});
 
 const Hero = () => {
   return (
@@ -21,25 +33,30 @@ const Hero = () => {
           backdropFilter: "blur(12.64466667175293px)",
         }}
       >
-        <div className="max-w-3xl">
-          <h1 className="text-7xl font-bold text-[#4A2E23] leading-tight">
-            We are Creative Digital & Marketing Agency
-          </h1>
-          <p className="mt-6 text-lg text-[#4A2E23] max-w-xl">
-            We Offer A Full Suite Of Digital Marketing Services Including SEO,
-            PPC, Social Media Marketing, And More. Explore Each Service To Find
-            The Right Solution For Your Business.
-          </p>
-          <div className="mt-12 flex items-center gap-6">
-            <button className="flex items-center justify-center w-16 h-16 border-2 border-[#FF7D45] rounded-full">
-              <Image
-                src="/assets/pauseplay.png"
-                alt="Play"
-                width={24}
-                height={24}
-              />
-            </button>
-            <button className="bg-[#FF7D45] text-white px-10 py-4 rounded-lg text-lg font-semibold shadow-lg">
+        {/* Text Content */}
+        <div className="w-full flex flex-col mt-20">
+          <div className="flex flex-col items-center text-start max-w-2xl mx-auto">
+            <h1
+              className={`text-8xl font-bold text-[#4A2E23] ${mangoGrotesque.className}`}
+              style={{ letterSpacing: "0.96px" }}
+            >
+              We are Creative Digital & Marketing Agency
+            </h1>
+            <p className="mt-6 text-lg text-[#4A2E23]">
+              We Offer A Full Suite Of Digital Marketing Services Including SEO,
+              PPC, Social Media Marketing, And More. Explore Each Service To
+              Find The Right Solution For Your Business.
+            </p>
+          </div>
+          <div className="mt-12 relative flex items-center gap-6">
+            <Image
+              src="/assets/pauseplay.png"
+              alt="Play"
+              width={215}
+              height={58}
+              className="absolute -left-12 top-0 flex-shrink-0"
+            />
+            <button className="bg-[#FF7D45] text-white px-10 py-4 rounded-lg text-lg font-semibold shadow-lg ml-40">
               Book a Call
             </button>
           </div>
