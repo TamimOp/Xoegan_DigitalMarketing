@@ -17,14 +17,14 @@ const mangoGrotesque = localFont({
 
 const Hero = () => {
   return (
-    <div className="relative flex min-h-screen bg-[#FDFBF6]">
+    <div className="relative flex min-h-screen bg-[#FDFBF6] pt-0">
       {/* Left Section */}
       <div
         className="flex items-center flex-shrink-0 rounded-br-[10px]"
         style={{
           width: "860px",
-          height: "754px",
-          padding: "89px 52px",
+          height: "100vh",
+          padding: "140px 52px 89px 52px",
           gap: "10px",
           background:
             "linear-gradient(180deg, rgba(255, 238, 188, 0.30) 0%, rgba(247, 193, 158, 0.23) 91.5%, rgba(255, 125, 69, 0.12) 100%)",
@@ -34,7 +34,7 @@ const Hero = () => {
         }}
       >
         {/* Text Content */}
-        <div className="w-full flex flex-col mt-20">
+        <div className="w-full flex flex-col">
           <div className="flex flex-col items-center text-start max-w-2xl mx-auto">
             <h1
               className={`text-8xl font-bold text-[#4A2E23] ${mangoGrotesque.className}`}
@@ -96,7 +96,7 @@ const Hero = () => {
       </div>
 
       {/* Right Section */}
-      <div className="relative flex items-center justify-center gap-4">
+      <div className="relative flex items-center justify-center gap-4 flex-1">
         {/* heroImage1.jpg - smaller image */}
         <div
           className="w-[190px] h-[285px] rounded-full flex-shrink-0"
