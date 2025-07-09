@@ -62,7 +62,7 @@ const Hero = () => {
           </div>
           <div className="mt-16 flex items-center gap-10">
             <Image
-              src="/assets/Slack.svg"
+              src="/assets/Slack1.svg"
               alt="Slack"
               width={110}
               height={30}
