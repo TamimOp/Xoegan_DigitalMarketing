@@ -1,5 +1,17 @@
 import React from "react";
 import Image from "next/image";
+import localFont from "next/font/local";
+
+const mangoGrotesque = localFont({
+  src: [
+    {
+      path: "../public/fonts/MangoGrotesque-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+  ],
+  variable: "--font-mango-grotesque",
+});
 
 const Booking = () => {
   return (
@@ -35,11 +47,13 @@ const Booking = () => {
           </div>
 
           {/* Right Content */}
-          <div className="flex-1">
-            <h2 className="text-4xl lg:text-5xl font-bold text-[#4A3728] mb-6 leading-tight">
+          <div className="flex-1 max-w-2xl">
+            <h2
+              className={`text-4xl lg:text-7xl font-bold text-[#4A3728] mb-6 leading-tight ${mangoGrotesque.className}`}
+            >
               We Give Best Solution To Grow Up Your Business
             </h2>
-            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+            <p className="text-[#3F3F3F] text-xl mb-8 leading-relaxed">
               At Our Agency, We&apos;re Dedicated To Helping Businesses Like
               Yours Reach Their Full Potential.
             </p>
@@ -63,11 +77,13 @@ const Booking = () => {
           style={{ gap: "106px" }}
         >
           {/* Left Content */}
-          <div className="flex-1">
-            <h2 className="text-4xl lg:text-5xl font-bold text-[#4A3728] mb-6 leading-tight">
+          <div className="flex-1 max-w-2xl">
+            <h2
+              className={`text-4xl lg:text-7xl font-bold text-[#4A3728] mb-6 leading-tight ${mangoGrotesque.className}`}
+            >
               Business Has Only Two Function- Marketing And Innovation
             </h2>
-            <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+            <p className="text-[#3F3F3F] text-xl mb-8 leading-relaxed">
               At Our Agency, We&apos;re Dedicated To Helping Businesses Like
               Yours Reach Their Full Potential.
             </p>
