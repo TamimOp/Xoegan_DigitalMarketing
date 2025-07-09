@@ -165,9 +165,9 @@ const Feedback = () => {
         </div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center space-x-2">
-          <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-          <div className="w-8 h-2 bg-orange-400 rounded-full"></div>
+        <div className="flex justify-center space-x-2 pt-4">
+          <div className="w-6 h-2 bg-[#2F1A05] rounded-full"></div>
+          <div className="w-14 h-2 bg-[#F57431] rounded-full"></div>
         </div>
       </div>
     </section>
