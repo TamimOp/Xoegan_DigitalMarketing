@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import localFont from "next/font/local";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const mangoGrotesque = localFont({
   src: [
@@ -17,10 +17,63 @@ const mangoGrotesque = localFont({
 });
 
 const Hero = () => {
+  // Animation variants for content only - properly typed
+  const fadeInUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
+  const fadeInLeft: Variants = {
+    hidden: { opacity: 0, x: -30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, ease: "easeOut" },
+    },
+  };
+
+  const fadeInRight: Variants = {
+    hidden: { opacity: 0, x: 30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.8, ease: "easeOut", delay: 0.2 },
+    },
+  };
+
+  const staggerContainer: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const scaleIn: Variants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  };
+
   return (
-    <div className="relative flex flex-col lg:flex-row min-h-screen bg-[#FDFBF6] pt-0 overflow-hidden">
+    <motion.div
+      className="relative flex flex-col lg:flex-row min-h-screen bg-[#FDFBF6] pt-0 overflow-hidden"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+    >
       {/* Left Section */}
-      <div
+      <motion.div
         className="flex items-center flex-shrink-0 rounded-br-[10px] w-full lg:w-[860px] min-h-[70vh] lg:h-[100vh] relative z-10"
         style={{
           padding: "140px 20px 50px 20px",
@@ -31,78 +84,97 @@ const Hero = () => {
             "-4px -4px 9.727px 0px rgba(203, 197, 177, 0.60) inset, 0px 0px 9.727px 0px rgba(255, 255, 255, 0.60) inset",
           backdropFilter: "blur(12.64466667175293px)",
         }}
+        variants={fadeInLeft}
       >
         {/* Text Content */}
-        <div className="w-full flex flex-col relative z-30">
+        <motion.div
+          className="w-full flex flex-col relative z-30"
+          variants={staggerContainer}
+        >
           <div className="flex flex-col items-center text-start max-w-2xl mx-auto">
-            <h1
+            <motion.h1
               className={`text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-[#4A2E23] ${mangoGrotesque.className}`}
               style={{ letterSpacing: "0.96px" }}
+              variants={fadeInUp}
             >
               We are Creative Digital & Marketing Agency
-            </h1>
-            <p className="mt-4 lg:mt-6 text-base sm:text-lg text-[#4A2E23]">
+            </motion.h1>
+            <motion.p
+              className="mt-4 lg:mt-6 text-base sm:text-lg text-[#4A2E23]"
+              variants={fadeInUp}
+            >
               We Offer A Full Suite Of Digital Marketing Services Including SEO,
               PPC, Social Media Marketing, And More. Explore Each Service To
               Find The Right Solution For Your Business.
-            </p>
+            </motion.p>
           </div>
-          <div className="mt-8 lg:mt-12 relative flex items-center gap-6">
-            <Image
-              src="/assets/pauseplay.png"
-              alt="Play"
-              width={215}
-              height={58}
-              className="hidden sm:block absolute -left-12 top-0 flex-shrink-0 w-[150px] md:w-[180px] lg:w-[215px]"
-            />
-            <button className="bg-[#FF7D45] text-white px-6 sm:px-8 lg:px-10 py-3 lg:py-4 rounded-lg text-base lg:text-lg font-semibold shadow-lg sm:ml-16 md:ml-28 lg:ml-40 mx-auto sm:mx-0">
+          <motion.div
+            className="mt-8 lg:mt-12 relative flex items-center gap-6"
+            variants={fadeInUp}
+          >
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.8, duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <Image
+                src="/assets/pauseplay.png"
+                alt="Play"
+                width={215}
+                height={58}
+                className="hidden sm:block absolute -left-12 top-0 flex-shrink-0 w-[150px] md:w-[180px] lg:w-[215px]"
+              />
+            </motion.div>
+            <motion.button
+              className="bg-[#FF7D45] text-white px-6 sm:px-8 lg:px-10 py-3 lg:py-4 rounded-lg text-base lg:text-lg font-semibold shadow-lg sm:ml-16 md:ml-28 lg:ml-40 mx-auto sm:mx-0"
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 10px 25px rgba(255, 125, 69, 0.3)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+            >
               Book a Call
-            </button>
-          </div>
-          <div className="mt-10 lg:mt-16 flex flex-wrap justify-center sm:justify-start items-center gap-5 sm:gap-8 lg:gap-10 overflow-x-auto pl-0 md:pl-12">
-            <Image
-              src="/assets/Slack1.svg"
-              alt="Slack"
-              width={110}
-              height={30}
-              className="w-20 sm:w-24 lg:w-[110px] h-auto"
-            />
-            <Image
-              src="/assets/Google.svg"
-              alt="Google"
-              width={110}
-              height={30}
-              className="w-20 sm:w-24 lg:w-[110px] h-auto"
-            />
-            <Image
-              src="/assets/Netflix.svg"
-              alt="Netflix"
-              width={110}
-              height={30}
-              className="w-20 sm:w-24 lg:w-[110px] h-auto"
-            />
-            <Image
-              src="/assets/amazon.svg"
-              alt="Amazon"
-              width={110}
-              height={30}
-              className="w-20 sm:w-24 lg:w-[110px] h-auto"
-            />
-            <Image
-              src="/assets/Linkedin.svg"
-              alt="LinkedIn"
-              width={110}
-              height={30}
-              className="w-20 sm:w-24 lg:w-[110px] h-auto"
-            />
-          </div>
-        </div>
-      </div>
+            </motion.button>
+          </motion.div>
+          <motion.div
+            className="mt-10 lg:mt-16 flex flex-wrap justify-center sm:justify-start items-center gap-5 sm:gap-8 lg:gap-10 overflow-x-auto pl-0 md:pl-12"
+            variants={staggerContainer}
+          >
+            {[
+              { src: "/assets/Slack1.svg", alt: "Slack" },
+              { src: "/assets/Google.svg", alt: "Google" },
+              { src: "/assets/Netflix.svg", alt: "Netflix" },
+              { src: "/assets/amazon.svg", alt: "Amazon" },
+              { src: "/assets/Linkedin.svg", alt: "LinkedIn" },
+            ].map((logo) => (
+              <motion.div
+                key={logo.alt}
+                variants={fadeInUp}
+                whileHover={{ scale: 1.1, y: -5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={110}
+                  height={30}
+                  className="w-20 sm:w-24 lg:w-[110px] h-auto"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </motion.div>
 
       {/* Right Section */}
-      <div className="relative flex items-center justify-center md:justify-start gap-2 sm:gap-3 lg:gap-4 flex-1 min-h-[50vh] py-10 lg:py-0 pr-4 sm:pr-6 lg:pr-8 z-40">
+      <motion.div
+        className="relative flex items-center justify-center md:justify-start gap-2 sm:gap-3 lg:gap-4 flex-1 min-h-[50vh] py-10 lg:py-0 pr-4 sm:pr-6 lg:pr-8 z-40"
+        variants={fadeInRight}
+      >
         {/* heroImage1.jpg - smaller image */}
-        <div
+        <motion.div
           className="w-[120px] h-[180px] sm:w-[150px] sm:h-[225px] lg:w-[190px] lg:h-[285px] rounded-full flex-shrink-0"
           style={{
             background:
@@ -110,10 +182,13 @@ const Hero = () => {
             boxShadow:
               "-34px 137px 39px 0px rgba(0, 0, 0, 0.00), -22px 87px 36px 0px rgba(0, 0, 0, 0.02), -12px 49px 30px 0px rgba(0, 0, 0, 0.08), -5px 22px 23px 0px rgba(215, 216, 202, 0.13), -1px 5px 12px 0px rgba(0, 0, 0, 0.15)",
           }}
+          variants={scaleIn}
+          transition={{ delay: 0.5 }}
+          whileHover={{ scale: 1.05, rotate: 2 }}
         />
 
         {/* heroImage2.png - larger image */}
-        <div
+        <motion.div
           className="w-[180px] h-[300px] sm:w-[220px] sm:h-[370px] lg:w-[280px] lg:h-[468px] rounded-full flex-shrink-0"
           style={{
             background:
@@ -121,16 +196,24 @@ const Hero = () => {
             boxShadow:
               "-77px 217px 64px 0px rgba(0, 0, 0, 0.00), -49px 139px 59px 0px rgba(0, 0, 0, 0.02), -28px 78px 50px 0px rgba(0, 0, 0, 0.07), -12px 35px 37px 0px rgba(0, 0, 0, 0.11), -3px 9px 20px 0px rgba(211, 212, 198, 0.13)",
           }}
+          variants={scaleIn}
+          transition={{ delay: 0.7 }}
+          whileHover={{ scale: 1.05, rotate: -2 }}
         />
 
         {/* Floating cards */}
-        <div
+        <motion.div
           className="absolute top-[20%] right-2 sm:right-4 lg:right-8 flex flex-col justify-center items-center gap-[10px] flex-shrink-0 w-[120px] sm:w-[150px] lg:w-[170px] h-[45px] sm:h-[50px] lg:h-[56px] px-[8px] sm:px-[10px] py-[6px] sm:py-[8px]"
           style={{
             borderRadius: "12px 12px 12px 0px",
             background: "rgba(255, 255, 255, 0.60)",
             boxShadow: "-2px 4px 26px 1px rgba(0, 0, 0, 0.18)",
           }}
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.9, duration: 0.6 }}
+          viewport={{ once: true }}
+          whileHover={{ scale: 1.05, y: -5 }}
         >
           <div className="flex items-center gap-2 sm:gap-3">
             <p className="font-semibold text-xs sm:text-sm lg:text-base">
@@ -144,15 +227,20 @@ const Hero = () => {
               className="w-5 h-5 sm:w-6 sm:h-6 lg:w-6 lg:h-6"
             />
           </div>
-        </div>
+        </motion.div>
 
-        <div
+        <motion.div
           className="absolute bottom-[20%] right-2 sm:right-4 lg:right-8 flex flex-col justify-center items-center gap-[10px] flex-shrink-0 w-[180px] sm:w-[210px] lg:w-[239px] h-[50px] sm:h-[55px] lg:h-[61px] px-[20px] sm:px-[26px] lg:px-[32px] py-[10px] sm:py-[12px] lg:py-[14px]"
           style={{
             borderRadius: "12px 0px 12px 12px",
             background: "rgba(255, 255, 255, 0.86)",
             boxShadow: "-2px 4px 26px 1px rgba(0, 0, 0, 0.18)",
           }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.1, duration: 0.6 }}
+          viewport={{ once: true }}
+          whileHover={{ scale: 1.05, y: -5 }}
         >
           <div className="flex items-center gap-1 sm:gap-2">
             <p className="font-bold text-blue-600 text-base sm:text-lg lg:text-xl">
@@ -162,11 +250,17 @@ const Hero = () => {
               Clients and book a demo today
             </p>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
-      {/* Floating Background Elements - After content sections for proper layering */}
-      <div className="absolute inset-0 pointer-events-none z-20">
+      {/* Floating Background Elements - Ellipses with content visibility only */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none z-20"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.3 }}
+      >
         {/* Blue Ellipses */}
         <motion.div
           className="absolute top-[20%] left-[8%]"
@@ -349,10 +443,22 @@ const Hero = () => {
             className="opacity-55"
           />
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Star Rating */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-[50%] sm:left-[53%] lg:left-[57%] bg-white p-2 sm:p-3 rounded-full shadow-lg flex items-center gap-1 sm:gap-2 z-40">
+      <motion.div
+        className="absolute top-[55%] sm:top-1/2 -translate-y-1/2 left-[45%] sm:left-[50%] md:left-[53%] lg:left-[57%] bg-white p-2 sm:p-3 rounded-full shadow-lg flex items-center gap-1 sm:gap-2 z-40"
+        initial={{ opacity: 0, scale: 0 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{
+          delay: 1.3,
+          duration: 0.5,
+          type: "spring",
+          stiffness: 100,
+        }}
+        viewport={{ once: true }}
+        whileHover={{ scale: 1.15, rotate: 5 }}
+      >
         <Image
           src="/assets/star.svg"
           alt="Star"
@@ -361,8 +467,8 @@ const Hero = () => {
           className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
         />
         <span className="font-bold text-sm sm:text-base lg:text-lg">5.0</span>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 };
 
