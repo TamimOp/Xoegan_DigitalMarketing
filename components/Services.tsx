@@ -66,9 +66,9 @@ const Services = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-[#F8F6F3] overflow-hidden">
+    <section className="relative bg-[#F8F6F3] overflow-hidden">
       {/* Background SVGs */}
-      <div className="absolute top-0 left-0 w-full h-full">
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -101,14 +101,14 @@ const Services = () => {
 
       {/* Content */}
       <motion.div
-        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+        className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
         {/* Header */}
-        <motion.div className="mb-16" variants={headerVariants}>
+        <motion.div className="mb-12" variants={headerVariants}>
           <motion.p
             className="text-[#FF6B35] text-lg font-medium mb-4 tracking-wide"
             initial={{ opacity: 0, x: -30 }}
@@ -119,7 +119,7 @@ const Services = () => {
             services
           </motion.p>
           <motion.h2
-            className={`text-[#4A4A4A] text-6xl lg:text-7xl font-bold mb-4 ${mangoGrotesque.className}`}
+            className={`text-[#4A4A4A] text-4xl sm:text-6xl lg:text-7xl font-bold mb-4 ${mangoGrotesque.className}`}
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -138,7 +138,7 @@ const Services = () => {
 
         {/* Services Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 pb-0"
           variants={containerVariants}
         >
           {/* Service 1 */}
