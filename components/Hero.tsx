@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import localFont from "next/font/local";
+import { motion } from "framer-motion";
 
 const mangoGrotesque = localFont({
   src: [
@@ -20,7 +21,7 @@ const Hero = () => {
     <div className="relative flex flex-col lg:flex-row min-h-screen bg-[#FDFBF6] pt-0 overflow-hidden">
       {/* Left Section */}
       <div
-        className="flex items-center flex-shrink-0 rounded-br-[10px] w-full lg:w-[860px] min-h-[70vh] lg:h-[100vh]"
+        className="flex items-center flex-shrink-0 rounded-br-[10px] w-full lg:w-[860px] min-h-[70vh] lg:h-[100vh] relative z-10"
         style={{
           padding: "140px 20px 50px 20px",
           gap: "10px",
@@ -32,7 +33,7 @@ const Hero = () => {
         }}
       >
         {/* Text Content */}
-        <div className="w-full flex flex-col">
+        <div className="w-full flex flex-col relative z-30">
           <div className="flex flex-col items-center text-start max-w-2xl mx-auto">
             <h1
               className={`text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-[#4A2E23] ${mangoGrotesque.className}`}
@@ -99,7 +100,7 @@ const Hero = () => {
       </div>
 
       {/* Right Section */}
-      <div className="relative flex items-center justify-center md:justify-start gap-2 sm:gap-3 lg:gap-4 flex-1 min-h-[50vh] py-10 lg:py-0 pr-4 sm:pr-6 lg:pr-8">
+      <div className="relative flex items-center justify-center md:justify-start gap-2 sm:gap-3 lg:gap-4 flex-1 min-h-[50vh] py-10 lg:py-0 pr-4 sm:pr-6 lg:pr-8 z-40">
         {/* heroImage1.jpg - smaller image */}
         <div
           className="w-[120px] h-[180px] sm:w-[150px] sm:h-[225px] lg:w-[190px] lg:h-[285px] rounded-full flex-shrink-0"
@@ -164,8 +165,194 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Floating Background Elements - After content sections for proper layering */}
+      <div className="absolute inset-0 pointer-events-none z-20">
+        {/* Blue Ellipses */}
+        <motion.div
+          className="absolute top-[20%] left-[8%]"
+          animate={{
+            y: [0, -20, 0],
+            rotate: [0, 360],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <Image
+            src="/assets/EllipseBlue.svg"
+            alt=""
+            width={15}
+            height={20}
+            className="opacity-70"
+          />
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-[10%] right-[12%]"
+          animate={{
+            y: [0, 15, 0],
+            rotate: [0, -360],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2,
+          }}
+        >
+          <Image
+            src="/assets/EllipseBlue.svg"
+            alt=""
+            width={15}
+            height={20}
+            className="opacity-60"
+          />
+        </motion.div>
+
+        {/* Green Ellipses */}
+        <motion.div
+          className="absolute top-[20%] right-[30%]"
+          animate={{
+            y: [0, -25, 0],
+            x: [0, 10, 0],
+            rotate: [0, 180],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        >
+          <Image
+            src="/assets/EllipseGreen.svg"
+            alt=""
+            width={15}
+            height={20}
+            className="opacity-75"
+          />
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-[35%] left-[35%]"
+          animate={{
+            y: [0, 20, 0],
+            x: [0, -15, 0],
+            rotate: [0, -180],
+          }}
+          transition={{
+            duration: 9,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 3,
+          }}
+        >
+          <Image
+            src="/assets/EllipseGreen.svg"
+            alt=""
+            width={15}
+            height={20}
+            className="opacity-65"
+          />
+        </motion.div>
+
+        {/* Orange Ellipses */}
+        <motion.div
+          className="absolute top-[38%] left-[45%]"
+          animate={{
+            y: [0, -30, 0],
+            rotate: [0, 270],
+          }}
+          transition={{
+            duration: 7,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 0.5,
+          }}
+        >
+          <Image
+            src="/assets/EllipseOrange.svg"
+            alt=""
+            width={15}
+            height={20}
+            className="opacity-80"
+          />
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-[5%] right-[45%]"
+          animate={{
+            y: [0, 25, 0],
+            x: [0, 20, 0],
+            rotate: [0, -270],
+          }}
+          transition={{
+            duration: 11,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 4,
+          }}
+        >
+          <Image
+            src="/assets/EllipseOrange.svg"
+            alt=""
+            width={15}
+            height={20}
+            className="opacity-70"
+          />
+        </motion.div>
+
+        {/* Additional ellipses for better spread */}
+        <motion.div
+          className="absolute top-[10%] right-[5%]"
+          animate={{
+            y: [0, -15, 0],
+            rotate: [0, -90],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1.5,
+          }}
+        >
+          <Image
+            src="/assets/EllipseBlue.svg"
+            alt=""
+            width={15}
+            height={20}
+            className="opacity-50"
+          />
+        </motion.div>
+
+        <motion.div
+          className="absolute bottom-[25%] right-[30%]"
+          animate={{
+            y: [0, 18, 0],
+            x: [0, -12, 0],
+            rotate: [0, 120],
+          }}
+          transition={{
+            duration: 14,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2.5,
+          }}
+        >
+          <Image
+            src="/assets/EllipseGreen.svg"
+            alt=""
+            width={15}
+            height={20}
+            className="opacity-55"
+          />
+        </motion.div>
+      </div>
+
       {/* Star Rating */}
-      <div className="absolute top-1/2 -translate-y-1/2 left-[50%] sm:left-[53%] lg:left-[57%] bg-white p-2 sm:p-3 rounded-full shadow-lg flex items-center gap-1 sm:gap-2 z-10">
+      <div className="absolute top-1/2 -translate-y-1/2 left-[50%] sm:left-[53%] lg:left-[57%] bg-white p-2 sm:p-3 rounded-full shadow-lg flex items-center gap-1 sm:gap-2 z-40">
         <Image
           src="/assets/star.svg"
           alt="Star"

@@ -2,6 +2,18 @@
 import React from "react";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
+import localFont from "next/font/local";
+
+const mangoGrotesque = localFont({
+  src: [
+    {
+      path: "../public/fonts/MangoGrotesque-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+  ],
+  variable: "--font-mango-grotesque",
+});
 
 const Services = () => {
   // Animation variants with proper typing
@@ -107,7 +119,7 @@ const Services = () => {
             services
           </motion.p>
           <motion.h2
-            className="text-[#4A4A4A] text-5xl lg:text-6xl font-bold mb-4"
+            className={`text-[#4A4A4A] text-6xl lg:text-7xl font-bold mb-4 ${mangoGrotesque.className}`}
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
