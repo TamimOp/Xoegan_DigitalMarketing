@@ -17,7 +17,7 @@ const mangoGrotesque = localFont({
 
 const Hero = () => {
   return (
-    <div className="relative flex flex-col lg:flex-row min-h-screen bg-[#FDFBF6] pt-0">
+    <div className="relative flex flex-col lg:flex-row min-h-screen bg-[#FDFBF6] pt-0 overflow-hidden">
       {/* Left Section */}
       <div
         className="flex items-center flex-shrink-0 rounded-br-[10px] w-full lg:w-[860px] min-h-[70vh] lg:h-[100vh]"
@@ -58,7 +58,7 @@ const Hero = () => {
               Book a Call
             </button>
           </div>
-          <div className="mt-10 lg:mt-16 flex flex-wrap justify-center sm:justify-start items-center gap-5 sm:gap-8 lg:gap-10 overflow-x-auto">
+          <div className="mt-10 lg:mt-16 flex flex-wrap justify-center sm:justify-start items-center gap-5 sm:gap-8 lg:gap-10 overflow-x-auto pl-0 md:pl-12">
             <Image
               src="/assets/Slack1.svg"
               alt="Slack"
@@ -99,7 +99,7 @@ const Hero = () => {
       </div>
 
       {/* Right Section */}
-      <div className="relative flex items-center justify-center gap-2 sm:gap-3 lg:gap-4 flex-1 min-h-[50vh] py-10 lg:py-0">
+      <div className="relative flex items-center justify-center md:justify-start gap-2 sm:gap-3 lg:gap-4 flex-1 min-h-[50vh] py-10 lg:py-0 pr-4 sm:pr-6 lg:pr-8">
         {/* heroImage1.jpg - smaller image */}
         <div
           className="w-[120px] h-[180px] sm:w-[150px] sm:h-[225px] lg:w-[190px] lg:h-[285px] rounded-full flex-shrink-0"
@@ -124,7 +124,7 @@ const Hero = () => {
 
         {/* Floating cards */}
         <div
-          className="absolute top-[20%] right-[-15px] sm:right-[-30px] lg:right-[-50px] flex flex-col justify-center items-center gap-[10px] flex-shrink-0 w-[120px] sm:w-[150px] lg:w-[170px] h-[45px] sm:h-[50px] lg:h-[56px] px-[8px] sm:px-[10px] py-[6px] sm:py-[8px]"
+          className="absolute top-[20%] right-2 sm:right-4 lg:right-8 flex flex-col justify-center items-center gap-[10px] flex-shrink-0 w-[120px] sm:w-[150px] lg:w-[170px] h-[45px] sm:h-[50px] lg:h-[56px] px-[8px] sm:px-[10px] py-[6px] sm:py-[8px]"
           style={{
             borderRadius: "12px 12px 12px 0px",
             background: "rgba(255, 255, 255, 0.60)",
@@ -146,7 +146,7 @@ const Hero = () => {
         </div>
 
         <div
-          className="absolute bottom-[20%] right-2 sm:right-5 lg:right-10 flex flex-col justify-center items-center gap-[10px] flex-shrink-0 w-[180px] sm:w-[210px] lg:w-[239px] h-[50px] sm:h-[55px] lg:h-[61px] px-[20px] sm:px-[26px] lg:px-[32px] py-[10px] sm:py-[12px] lg:py-[14px]"
+          className="absolute bottom-[20%] right-2 sm:right-4 lg:right-8 flex flex-col justify-center items-center gap-[10px] flex-shrink-0 w-[180px] sm:w-[210px] lg:w-[239px] h-[50px] sm:h-[55px] lg:h-[61px] px-[20px] sm:px-[26px] lg:px-[32px] py-[10px] sm:py-[12px] lg:py-[14px]"
           style={{
             borderRadius: "12px 0px 12px 12px",
             background: "rgba(255, 255, 255, 0.86)",
