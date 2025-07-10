@@ -96,7 +96,7 @@ const FinalMessage = () => {
       >
         {/* Profile image - positioned absolute top-right on the #2F1A05 div */}
         <motion.div
-          className="absolute top-0 right-0 w-36 h-32 sm:w-48 sm:h-40 md:w-56 md:h-48 lg:w-64 lg:h-56 overflow-hidden rounded-bl-[250px] sm:rounded-bl-[350px] lg:rounded-bl-[505px] bg-[#FF7D45] z-50"
+          className="hidden sm:block absolute top-0 right-0 w-48 h-40 md:w-56 md:h-48 lg:w-64 lg:h-56 overflow-hidden rounded-bl-[350px] lg:rounded-bl-[505px] bg-[#FF7D45] z-50"
           variants={profileVariants}
         >
           <motion.div
