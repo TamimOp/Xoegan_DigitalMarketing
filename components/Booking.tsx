@@ -16,7 +16,7 @@ const mangoGrotesque = localFont({
 });
 
 const Booking = () => {
-  // Animation variants with proper TypeScript typing
+  // Animation variants with reduced movement to prevent overflow
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -29,7 +29,7 @@ const Booking = () => {
   };
 
   const imageVariants: Variants = {
-    hidden: { opacity: 0, x: -50, scale: 0.9 },
+    hidden: { opacity: 0, x: -20, scale: 0.95 },
     visible: {
       opacity: 1,
       x: 0,
@@ -42,7 +42,7 @@ const Booking = () => {
   };
 
   const imageRightVariants: Variants = {
-    hidden: { opacity: 0, x: 50, scale: 0.9 },
+    hidden: { opacity: 0, x: 20, scale: 0.95 },
     visible: {
       opacity: 1,
       x: 0,
@@ -55,7 +55,7 @@ const Booking = () => {
   };
 
   const textVariants: Variants = {
-    hidden: { opacity: 0, x: 50 },
+    hidden: { opacity: 0, x: 20 },
     visible: {
       opacity: 1,
       x: 0,
@@ -67,7 +67,7 @@ const Booking = () => {
   };
 
   const textLeftVariants: Variants = {
-    hidden: { opacity: 0, x: -50 },
+    hidden: { opacity: 0, x: -20 },
     visible: {
       opacity: 1,
       x: 0,
@@ -92,7 +92,7 @@ const Booking = () => {
 
   return (
     <div
-      className="py-16 px-4"
+      className="py-16 px-4 overflow-hidden"
       style={{
         background: "linear-gradient(180deg, #F8F2E4 0%, #F5E4DC 100%)",
       }}
@@ -105,16 +105,11 @@ const Booking = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <div
-          className="flex flex-col lg:flex-row items-center"
-          style={{ gap: "106px" }}
-        >
+        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 xl:gap-[106px]">
           {/* Left Image */}
           <motion.div
-            className="relative overflow-hidden"
+            className="relative overflow-hidden w-full max-w-[333px] aspect-[333/397] flex-shrink-0"
             style={{
-              width: "333px",
-              height: "397px",
               borderRadius: "40px 40px 0px 40px",
               boxShadow:
                 "-34px 137px 39px 0px rgba(0, 0, 0, 0.00), -22px 87px 36px 0px rgba(0, 0, 0, 0.02), -12px 49px 30px 0px rgba(0, 0, 0, 0.08), -5px 22px 23px 0px rgba(215, 216, 202, 0.13), -1px 5px 12px 0px rgba(0, 0, 0, 0.15)",
@@ -131,9 +126,12 @@ const Booking = () => {
           </motion.div>
 
           {/* Right Content */}
-          <motion.div className="flex-1 max-w-2xl" variants={textVariants}>
+          <motion.div
+            className="flex-1 max-w-2xl w-full"
+            variants={textVariants}
+          >
             <motion.h2
-              className={`text-4xl lg:text-7xl font-bold text-[#4A3728] mb-6 leading-tight ${mangoGrotesque.className}`}
+              className={`text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold text-[#4A3728] mb-6 leading-tight ${mangoGrotesque.className}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -142,7 +140,7 @@ const Booking = () => {
               We Give Best Solution To Grow Up Your Business
             </motion.h2>
             <motion.p
-              className="text-[#3F3F3F] text-xl mb-8 leading-relaxed"
+              className="text-[#3F3F3F] text-lg lg:text-xl mb-8 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -175,14 +173,33 @@ const Booking = () => {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <div
-          className="flex flex-col lg:flex-row items-center"
-          style={{ gap: "106px" }}
-        >
+        <div className="flex flex-col lg:flex-row-reverse items-center gap-8 lg:gap-16 xl:gap-[106px]">
+          {/* Right Image */}
+          <motion.div
+            className="relative overflow-hidden w-full max-w-[333px] aspect-[333/397] flex-shrink-0"
+            style={{
+              borderRadius: "40px 40px 40px 0px",
+              boxShadow:
+                "-34px 137px 39px 0px rgba(0, 0, 0, 0.00), -22px 87px 36px 0px rgba(0, 0, 0, 0.02), -12px 49px 30px 0px rgba(0, 0, 0, 0.08), -5px 22px 23px 0px rgba(215, 216, 202, 0.13), -1px 5px 12px 0px rgba(0, 0, 0, 0.15)",
+            }}
+            variants={imageRightVariants}
+            whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+          >
+            <Image
+              src="/assets/bookingImage.jpg"
+              alt="Business team collaboration"
+              fill
+              className="object-cover"
+            />
+          </motion.div>
+
           {/* Left Content */}
-          <motion.div className="flex-1 max-w-2xl" variants={textLeftVariants}>
+          <motion.div
+            className="flex-1 max-w-2xl w-full"
+            variants={textLeftVariants}
+          >
             <motion.h2
-              className={`text-4xl lg:text-7xl font-bold text-[#4A3728] mb-6 leading-tight ${mangoGrotesque.className}`}
+              className={`text-3xl sm:text-4xl lg:text-6xl xl:text-7xl font-bold text-[#4A3728] mb-6 leading-tight ${mangoGrotesque.className}`}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -191,7 +208,7 @@ const Booking = () => {
               Business Has Only Two Function- Marketing And Innovation
             </motion.h2>
             <motion.p
-              className="text-[#3F3F3F] text-xl mb-8 leading-relaxed"
+              className="text-[#3F3F3F] text-lg lg:text-xl mb-8 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -212,27 +229,6 @@ const Booking = () => {
             >
               Book a Call
             </motion.button>
-          </motion.div>
-
-          {/* Right Image */}
-          <motion.div
-            className="relative overflow-hidden"
-            style={{
-              width: "333px",
-              height: "397px",
-              borderRadius: "40px 40px 40px 0px",
-              boxShadow:
-                "-34px 137px 39px 0px rgba(0, 0, 0, 0.00), -22px 87px 36px 0px rgba(0, 0, 0, 0.02), -12px 49px 30px 0px rgba(0, 0, 0, 0.08), -5px 22px 23px 0px rgba(215, 216, 202, 0.13), -1px 5px 12px 0px rgba(0, 0, 0, 0.15)",
-            }}
-            variants={imageRightVariants}
-            whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
-          >
-            <Image
-              src="/assets/bookingImage.jpg"
-              alt="Business team collaboration"
-              fill
-              className="object-cover"
-            />
           </motion.div>
         </div>
       </motion.div>
