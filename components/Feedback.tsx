@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import localFont from "next/font/local";
+import { motion, Variants } from "framer-motion";
 
 const mangoGrotesque = localFont({
   src: [
@@ -14,28 +16,99 @@ const mangoGrotesque = localFont({
 });
 
 const Feedback = () => {
+  // Animation variants with proper TypeScript typing
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, y: 50, scale: 0.9 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const lineVariants: Variants = {
+    hidden: { width: 0 },
+    visible: {
+      width: "240px",
+      transition: {
+        duration: 0.8,
+        delay: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const dotVariants: Variants = {
+    hidden: { opacity: 0, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut",
+      },
+    },
+  };
+
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-start mb-12">
-          <p className="text-[#EF7440] text-2xl font-medium tracking-widest uppercase mb-2">
-            services
-          </p>
+        <motion.div
+          className="text-start mb-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <motion.p
+            className="text-[#EF7440] text-2xl font-medium tracking-widest uppercase mb-2"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            testimonials
+          </motion.p>
           <div className="flex items-center gap-6 mb-4">
-            <h2
+            <motion.h2
               className={`text-4xl md:text-7xl font-bold text-gray-900 ${mangoGrotesque.className}`}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             >
               What Our Customer Say
-            </h2>
-            <div className="w-60 h-1 bg-[#EF7440]"></div>
+            </motion.h2>
+            <motion.div className="h-1 bg-[#EF7440]" variants={lineVariants} />
           </div>
-        </div>
+        </motion.div>
 
         {/* Testimonial Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {/* Card 1 */}
-          <div
+          <motion.div
             className="bg-white flex flex-col items-start gap-2.5 flex-shrink-0 overflow-hidden"
             style={{
               width: "346px",
@@ -45,8 +118,16 @@ const Feedback = () => {
               boxShadow:
                 "-139px 163px 60px 0px rgba(0, 0, 0, 0.00), -89px 104px 55px 0px rgba(0, 0, 0, 0.01), -50px 59px 46px 0px rgba(0, 0, 0, 0.05), -22px 26px 34px 0px rgba(0, 0, 0, 0.09), -6px 7px 19px 0px rgba(0, 0, 0, 0.10)",
             }}
+            variants={cardVariants}
+            whileHover={{ y: -10, transition: { duration: 0.3 } }}
           >
-            <div className="flex items-center mb-6">
+            <motion.div
+              className="flex items-center mb-6"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            >
               <Image
                 src="/assets/dp1.jpg"
                 alt="Mikel Simit"
@@ -68,17 +149,23 @@ const Feedback = () => {
                   Owner & Director Of Marketing
                 </p>
               </div>
-            </div>
-            <p className="text-gray-700 leading-relaxed text-sm">
+            </motion.div>
+            <motion.p
+              className="text-gray-700 leading-relaxed text-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            >
               Awesome Product Highly Recommended Lorem Ipsum Dolor Alamet,
               Nsectetur Mayalipol Tempor Elusmod Tempor Recommended Lorem Ipsum
               Dolor Alamet, Nsec Tetur Mayalipol Tempor Elusmod Tempor Incubto
               Ectetur Alasiqua Enim Ad Nim Veniam, Quis Nostrud Ullam
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Card 2 - Dark Theme */}
-          <div
+          <motion.div
             className="bg-[#2F1A05] text-white flex flex-col items-start gap-2.5 flex-shrink-0 overflow-hidden"
             style={{
               width: "346px",
@@ -88,8 +175,16 @@ const Feedback = () => {
               boxShadow:
                 "-139px 163px 60px 0px rgba(0, 0, 0, 0.00), -89px 104px 55px 0px rgba(0, 0, 0, 0.01), -50px 59px 46px 0px rgba(0, 0, 0, 0.05), -22px 26px 34px 0px rgba(0, 0, 0, 0.09), -6px 7px 19px 0px rgba(0, 0, 0, 0.10)",
             }}
+            variants={cardVariants}
+            whileHover={{ y: -10, scale: 1.05, transition: { duration: 0.3 } }}
           >
-            <div className="flex items-center mb-6">
+            <motion.div
+              className="flex items-center mb-6"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            >
               <Image
                 src="/assets/dp2.jpg"
                 alt="Mikel Simit"
@@ -111,17 +206,23 @@ const Feedback = () => {
                   Owner & Director Of Marketing
                 </p>
               </div>
-            </div>
-            <p className="text-amber-100 leading-relaxed text-sm">
+            </motion.div>
+            <motion.p
+              className="text-amber-100 leading-relaxed text-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            >
               Awesome Product Highly Recommended Lorem Ipsum Dolor Alamet,
               Nsectetur Mayalipol Tempor Elusmod Tempor Recommended Lorem Ipsum
               Dolor Alamet, Nsec Tetur Mayalipol Tempor Elusmod Tempor Incubto
               Ectetur Alasiqua Enim Ad Nim Veniam, Quis Nostrud Ullam
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Card 3 */}
-          <div
+          <motion.div
             className="bg-white flex flex-col items-start gap-2.5 flex-shrink-0 overflow-hidden"
             style={{
               width: "346px",
@@ -131,8 +232,16 @@ const Feedback = () => {
               boxShadow:
                 "-139px 163px 60px 0px rgba(0, 0, 0, 0.00), -89px 104px 55px 0px rgba(0, 0, 0, 0.01), -50px 59px 46px 0px rgba(0, 0, 0, 0.05), -22px 26px 34px 0px rgba(0, 0, 0, 0.09), -6px 7px 19px 0px rgba(0, 0, 0, 0.10)",
             }}
+            variants={cardVariants}
+            whileHover={{ y: -10, transition: { duration: 0.3 } }}
           >
-            <div className="flex items-center mb-6">
+            <motion.div
+              className="flex items-center mb-6"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
+            >
               <Image
                 src="/assets/dp3.jpg"
                 alt="Mikel Simit"
@@ -154,21 +263,39 @@ const Feedback = () => {
                   Owner & Director Of Marketing
                 </p>
               </div>
-            </div>
-            <p className="text-gray-700 leading-relaxed text-sm">
+            </motion.div>
+            <motion.p
+              className="text-gray-700 leading-relaxed text-sm"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.5, ease: "easeOut" }}
+            >
               Awesome Product Highly Recommended Lorem Ipsum Dolor Alamet,
               Nsectetur Mayalipol Tempor Elusmod Tempor Recommended Lorem Ipsum
               Dolor Alamet, Nsec Tetur Mayalipol Tempor Elusmod Tempor Incubto
               Ectetur Alasiqua Enim Ad Nim Veniam, Quis Nostrud Ullam
-            </p>
-          </div>
-        </div>
+            </motion.p>
+          </motion.div>
+        </motion.div>
 
         {/* Pagination Dots */}
-        <div className="flex justify-center space-x-2 pt-4">
-          <div className="w-6 h-2 bg-[#2F1A05] rounded-full"></div>
-          <div className="w-14 h-2 bg-[#F57431] rounded-full"></div>
-        </div>
+        <motion.div
+          className="flex justify-center space-x-2 pt-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+        >
+          <motion.div
+            className="w-6 h-2 bg-[#2F1A05] rounded-full"
+            variants={dotVariants}
+          />
+          <motion.div
+            className="w-14 h-2 bg-[#F57431] rounded-full"
+            variants={dotVariants}
+          />
+        </motion.div>
       </div>
     </section>
   );
