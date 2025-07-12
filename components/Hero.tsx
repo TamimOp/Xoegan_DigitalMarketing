@@ -113,17 +113,24 @@ const Hero = () => {
             variants={fadeInUp}
           >
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.8, duration: 0.6 }}
+              initial={{ opacity: 0, x: -200 }}
+              whileInView={{ opacity: 1, x: -48 }}
+              transition={{
+                delay: 0.8,
+                duration: 0.8,
+                type: "spring",
+                stiffness: 100,
+                damping: 20,
+              }}
               viewport={{ once: true }}
+              className="absolute top-0"
             >
               <Image
                 src="/assets/pauseplay.png"
                 alt="Play"
                 width={215}
                 height={58}
-                className="hidden sm:block absolute -left-12 top-0 flex-shrink-0 w-[150px] md:w-[180px] lg:w-[215px]"
+                className="hidden sm:block flex-shrink-0 w-[150px] md:w-[180px] lg:w-[215px]"
               />
             </motion.div>
             <motion.button
