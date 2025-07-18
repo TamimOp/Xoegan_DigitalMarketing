@@ -91,21 +91,21 @@ const Hero = () => {
           className="w-full flex flex-col relative z-30"
           variants={staggerContainer}
         >
-          <div className="flex flex-col items-center text-start max-w-2xl mx-auto">
+          <div className="flex flex-col items-start text-start ml-20">
             <motion.h1
               className={`text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-bold text-[#4A2E23] ${mangoGrotesque.className}`}
               style={{ letterSpacing: "0.96px" }}
               variants={fadeInUp}
             >
-              We are Creative Digital & Marketing Agency
+              We are Creative Digital & <br /> Marketing Agency
             </motion.h1>
             <motion.p
               className="mt-4 lg:mt-6 text-base sm:text-lg text-[#4A2E23]"
               variants={fadeInUp}
             >
               We Offer A Full Suite Of Digital Marketing Services Including SEO,
-              PPC, Social Media Marketing, And More. Explore Each Service To
-              Find The Right Solution For Your Business.
+              PPC, Social Media <br /> Marketing, And More. Explore Each Service
+              To Find The Right Solution For Your <br /> Business.
             </motion.p>
           </div>
           <motion.div
