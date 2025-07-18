@@ -146,7 +146,7 @@ const Hero = () => {
             </motion.button>
           </motion.div>
           <motion.div
-            className="mt-10 lg:mt-16 flex flex-wrap justify-center sm:justify-start items-center gap-5 sm:gap-8 lg:gap-10 overflow-x-auto pl-0 md:pl-12"
+            className="mt-10 lg:mt-16 flex flex-wrap justify-center sm:justify-start items-center gap-5 sm:gap-8 lg:gap-10 overflow-x-auto pl-0 md:pl-12 2xl:pl-25"
             variants={staggerContainer}
           >
             {[
@@ -182,8 +182,10 @@ const Hero = () => {
       >
         {/* heroImage1.jpg - smaller image */}
         <motion.div
-          className="w-[120px] h-[180px] sm:w-[150px] sm:h-[225px] lg:w-[190px] lg:h-[285px] rounded-full flex-shrink-0"
+          className="rounded-full flex-shrink-0"
           style={{
+            width: "clamp(120px, 12vw, 260px)",
+            height: "clamp(180px, 18vw, 390px)",
             background:
               "url('/assets/heroImage1.jpg') lightgray 50% / cover no-repeat",
             boxShadow:
@@ -196,8 +198,10 @@ const Hero = () => {
 
         {/* heroImage2.png - larger image */}
         <motion.div
-          className="w-[180px] h-[300px] sm:w-[220px] sm:h-[370px] lg:w-[280px] lg:h-[468px] rounded-full flex-shrink-0"
+          className="rounded-full flex-shrink-0"
           style={{
+            width: "clamp(180px, 18vw, 420px)",
+            height: "clamp(300px, 30vw, 700px)",
             background:
               "url('/assets/heroImage2.png') lightgray 50% / cover no-repeat",
             boxShadow:
