@@ -74,7 +74,7 @@ const Hero = () => {
     >
       {/* Left Section */}
       <motion.div
-        className="flex items-center flex-shrink-0 rounded-br-[10px] w-full lg:w-[860px] min-h-[70vh] lg:h-[100vh] relative z-10"
+        className="flex items-center flex-shrink-0 rounded-br-[10px] w-full lg:w-[60%] min-h-[70vh] lg:h-[100vh] relative z-10"
         style={{
           padding: "140px 20px 50px 20px",
           gap: "10px",
